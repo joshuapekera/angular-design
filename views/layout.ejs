@@ -6,7 +6,7 @@
         your `sails.config.appName` to show that you can inject data into layouts
         exactly the same way as with your other view templates.
     -->
-    <title><%- title %></title>
+    <title><%= title %></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -34,7 +34,8 @@
     -->
 
     <!--STYLES-->
-    <link rel="stylesheet" href="/linker/styles/main.css">
+    All .css files in assets/linker/styles (including automatically compile ones from LESS) will be included here
+    In production mode, they will all be concatenated and minified
     <!--STYLES END-->
   </head>
 
@@ -84,14 +85,8 @@
     -->
 
     <!--SCRIPTS-->
-    <script src="/linker/js/socket.io.js"></script>
-    <script src="/linker/js/sails.io.js"></script>
-    <script src="/linker/js/app.js"></script>
-    <script src="/linker/bower_components/lodash/dist/lodash.js"></script>
-    <script src="/linker/bower_components/angular/angular.js"></script>
-    <script src="/linker/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="/linker/js/angularApp.js"></script>
-    <script src="/linker/js/controllers/main.js"></script>
+    All .js files in assets/linker/js will be included here
+    In production mode, they will all be concatenated and minified
     <!--SCRIPTS END-->
     </body>
 </html>
