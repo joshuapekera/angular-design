@@ -138,7 +138,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
-  grunt.loadTasks(depsPath + '/grunt-karma/tasks');
+  grunt.loadNpmTasks('grunt-karma');
 
   // Project configuration.
   grunt.initConfig({
