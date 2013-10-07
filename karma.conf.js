@@ -8,7 +8,7 @@ module.exports = function (config) {
       'assets/linker/bower_components/angular-bootstrap/ui-bootstrap.js',
       'assets/linker/js/angularApp.js',
       'assets/linker/js/controllers/main.js',
-      'tests/spec/**/*.spec.js'
+      'tests/client/spec/**/*.spec.js'
     ],
     frameworks: ['jasmine'],
     autoWatch: true,
