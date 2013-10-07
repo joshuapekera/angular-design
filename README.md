@@ -5,7 +5,7 @@
 
 This demo's purpose is for creating a chat client while harnessing the power of [AngularJS](http://angularjs.org), while integrating with Socket.io via [Sails.js](http://sailsjs.org).
 
-## Overview - step-01
+## Overview - step-02
 
 A couple of things changed from the initial state.
 
