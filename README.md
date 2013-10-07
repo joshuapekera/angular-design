@@ -50,3 +50,11 @@ This app needs to have basic functionality on the client in order to function as
 *   Need to be able to add lines to chat
     *   Must architect feature in such a way that plugging in the syncing of text displayed via Socket.io is as painless as possible
 *   Need to implement collapsing the navbar via alternative mechanism (due to the lack of inclusion of Bootstrap's JS)
+
+## Steps to accomplish tasks
+
+*   Refactor HTML to take advantage of Angular
+*   Write unit test for implementing adding a new line to the chat
+*   Implement feature to make the test pass
+
+Go to [step-02](https://github.com/wesleycho/angular-design/tree/step-01) to see the solution!
