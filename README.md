@@ -27,6 +27,8 @@ This app needs to have more functionality on the client, as well as more functio
 
 ## Steps to accomplish tasks
 
+### Client-side
+
 *   Added in a hardcoded username
 *   Refactor unit test to test for the correct username being sent in `sendLine()`
 *   Refactor `sendLine()` to add in the username
@@ -34,5 +36,10 @@ This app needs to have more functionality on the client, as well as more functio
 *   Add unit test to test socket functionality - mock the service for interacting with the socket for the `sendLine()` test
 *   Write unit tests for service that interacts with sockets
 *   Make the unit tests pass
+
+### Server-side
+
+*   Write unit tests for websocket API
+*   Implement websocket api
 
 Go to [step-03](https://github.com/wesleycho/angular-design/tree/step-03) to see the solution!
