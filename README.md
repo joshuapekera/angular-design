@@ -47,11 +47,12 @@ This branch lays out the foundation for a brand new Sails project created via `s
 *   `grunt-karma` used for automating unit testing of client-side app
     *   Uses [Karma](http://karma-runner.github.io) for running client-side unit tests
     *   Using [Jasmine](http://pivotal.github.io/jasmine/) for unit testing framework & assertions on client-side JS
+*   [Mocha](http://visionmedia.github.io/mocha/) for unit testing framework & [Chai.js](http://chaijs.com) for assertions on server-side JS
 
 In order to see the app at work, do:
 
 *   Run `npm install` and `bower install` on the command line at the root of the project first!
-    *   Make sure you have [Node.js](http://nodejs.org) installed, and that you have run `(sudo) npm install -g karma grunt-cli bower sails` before running the aforementioned commands!
+    *   Make sure you have [Node.js](http://nodejs.org) installed, and that you have run `(sudo) npm install -g karma mocha grunt-cli bower sails` before running the aforementioned commands!
 *   Run `sails lift`, and view the project at `http://localhost:1337` on the browser
 
 ## Tasks

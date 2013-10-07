@@ -9,7 +9,8 @@
         "ejs": "0.8.4",
         "optimist": "0.3.4",
         "lodash": "2.0.0",
-        "grunt-karma": "0.6.2"
+        "grunt-karma": "0.6.2",
+        "chai": "1.8.1"
     },
     "scripts": {
         "start": "node app.js",
