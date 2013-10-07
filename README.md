@@ -47,7 +47,9 @@ This branch lays out the foundation for a brand new Sails project created via `s
 *   `grunt-karma` used for automating unit testing of client-side app
     *   Uses [Karma](http://karma-runner.github.io) for running client-side unit tests
     *   Using [Jasmine](http://pivotal.github.io/jasmine/) for unit testing framework & assertions on client-side JS
-*   [Mocha](http://visionmedia.github.io/mocha/) for unit testing framework & [Chai.js](http://chaijs.com) for assertions on server-side JS
+*   `grunt-simple-mocha` used for automating server-side unit testing of app
+    *   Uses [Mocha](http://visionmedia.github.io/mocha/) for unit testing framework
+    *   Uses [Chai.js](http://chaijs.com) for assertions
 
 In order to see the app at work, do:
 
