@@ -29,7 +29,7 @@ module.exports = function (grunt) {
    */
 
   var cssFilesToInject = [
-    'linker/**/*.css'
+    'linker/styles/main.css'
   ];
 
 
@@ -56,10 +56,15 @@ module.exports = function (grunt) {
     // automatic listener for incoming messages from Socket.io.
     'linker/js/app.js',
 
+    // Libraries retrieved from Bower
+    'linker/bower_components/lodash/dist/lodash.js',
+    'linker/bower_components/angular/angular.js',
+    'linker/bower_components/angular-bootstrap/ui-bootstrap.js',
+
     // *->    put other dependencies here   <-*
 
     // All of the rest of your app scripts imported here
-    'linker/**/*.js'
+    'linker/js/angularApp.js'
   ];
 
 
@@ -74,7 +79,7 @@ module.exports = function (grunt) {
    */
 
   var templateFilesToInject = [
-    'linker/**/*.html'
+    'linker/templates/*.html'
   ];
 
 
