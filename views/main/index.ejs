@@ -17,36 +17,28 @@
     </div>
   </nav>
 </header>
-<div class="container">
+<div class="container" ng-controller="MainCtrl">
   <h1>Chat Room</h1>
   <div class="well well-lg">
     <div class="chat window">
       <div class="display row">
         <div class="text col-md-9">
-          <div class="line">
+          <div class="line" ng-repeat="line in lines">
             <p>
-              <span class="timestamp">[12:00] </span>
-              <span class="name">Larry: </span>
-              Whooooooooooa
-            </p>
-          </div>
-          <div class="line">
-            <p>
-              <span class="timestamp">[12:01] </span>
-              <span class="name">Dave: </span>
-              This is just placeholder text
+              <span class="timestamp">{{line.time}} </span>
+              <span class="name">{{line.name}}: </span>
+              {{line.text}}
             </p>
           </div>
         </div>
         <div class="user list col-md-3">
-          <div class="person">Larry</div>
-          <div class="person">Dave</div>
+          <div class="person" ng-repeat="person in people">{{person.name}}</div>
         </div>
       </div>
       <div class="input">
-        <form name="chatInput">
+        <form name="chatInput" ng-submit="sendLine()">
           <div class="input-group">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="chat.text">
             <span class="input-group-btn">
               <button class="btn btn-default">Send</button>
             </span>
