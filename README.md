@@ -29,6 +29,8 @@ This branch lays out the foundation for a brand new Sails project created via `s
         *   Facilitates code organization in an excellent manner
         *   Uses HTML to describe the DOM, avoiding polluting HTML with template-specific helpers that are tied to the templating framework
         *   Built in a modular fashion, making it easy to create reusable modules, widgets, etc.
+        *   Can reduce code overhead by a huge amount
+            *   (Personal anecdote) My team lead and I were able to cut 600,000 lines from a poorly written Angular app via refactoring to take advantage of Angular - 66% code reduction!
     *   [Angular UI Bootstrap](http://angular-ui.github.io/bootstrap/)
         *   Rewrite of Bootstrap's JavaScript as an Angular plugin
         *   Requires no jQuery! (can save ~80-90 KB!)
