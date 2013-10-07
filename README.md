@@ -42,6 +42,9 @@ This branch lays out the foundation for a brand new Sails project created via `s
     *   Has no dynamic functionality currently
 *   `assets/linker/main.less` is the main stylesheet
     *   Contains basic stylings so that the main view looks sensible for a chat application
+*   `grunt-karma` used for automating unit testing of client-side app
+    *   Uses [Karma](http://karma-runner.github.io) for running client-side unit tests
+    *   Using [Jasmine](http://pivotal.github.io/jasmine/) forunit testing framework & assertions on client-side JS
 
 ## Tasks
 
