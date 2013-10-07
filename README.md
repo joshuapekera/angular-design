@@ -59,4 +59,4 @@ This app needs to have basic functionality on the client in order to function as
 *   Write unit test for implementing adding a new line to the chat
 *   Implement feature to make the test pass
 
-Go to [step-02](https://github.com/wesleycho/angular-design/tree/step-01) to see the solution!
+Go to [step-02](https://github.com/wesleycho/angular-design/tree/step-02) to see the solution!
