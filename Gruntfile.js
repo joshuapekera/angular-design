@@ -138,6 +138,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
+  grunt.loadTasks(depsPath + '/grunt-karma/tasks');
 
   // Project configuration.
   grunt.initConfig({
@@ -397,6 +398,13 @@ module.exports = function (grunt) {
        ************************************/
     },
 
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true
+      }
+    },
+
     watch: {
       api: {
 
@@ -438,6 +446,10 @@ module.exports = function (grunt) {
     'sails-linker:devJsJADE',
     'sails-linker:devStylesJADE',
     'sails-linker:devTplJADE'
+  ]);
+
+  grunt.registerTask('test', [
+    'karma:unit'
   ]);
 
 

@@ -1,7 +1,7 @@
 {
     "name": "angular-design",
     "version": "0.0.0",
-    "description": "An example chat client built with AngularJS & SailsJS",
+    "description": "An example chat client built with AngularJS & Sails.js",
     "repository": "https://github.com/wesleycho/angular-design",
     "author": "Wesley Cho",
     "license": "MIT",
