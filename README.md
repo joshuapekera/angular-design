@@ -57,6 +57,8 @@ This app needs to have basic functionality on the client in order to function as
 
 ## Steps to accomplish tasks
 
+*   Run `npm install` and `bower install` on the command line at the root of the project first!
+    *   Make sure you have [Node.js](http://nodejs.org) installed, and that you have run `(sudo) npm install -g karma grunt-cli bower` before running the aforementioned commands!
 *   Refactor HTML to take advantage of Angular
 *   Write unit test for implementing adding a new line to the chat
 *   Implement feature to make the test pass
