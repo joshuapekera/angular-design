@@ -11,6 +11,7 @@ This branch lays out the foundation for a brand new Sails project created via `s
 
 *   The assets specified for the asset manager are specifically enumerated in the Gruntfile - this is to naively control load order
 *   `MainController` is created to handle the default root route `'/'` - this is in the event we want to process any default actions
+    *   Located in `api/controllers/main.js`
 *   `bower.json` & `.bowerrc` are created in order to best leverage use of [Bower](http://bower.io) for client-side libraries with dependency management
 *   Client-side libraries used:
     *   [Bootstrap](http://getbootstrap.com)
@@ -41,3 +42,11 @@ This branch lays out the foundation for a brand new Sails project created via `s
     *   Has no dynamic functionality currently
 *   `assets/linker/main.less` is the main stylesheet
     *   Contains basic stylings so that the main view looks sensible for a chat application
+
+## Tasks
+
+This app needs to have basic functionality on the client in order to function as a chat application.
+
+*   Need to be able to add lines to chat
+    *   Must architect feature in such a way that plugging in the syncing of text displayed via Socket.io is as painless as possible
+*   Need to implement collapsing the navbar via alternative mechanism (due to the lack of inclusion of Bootstrap's JS)
