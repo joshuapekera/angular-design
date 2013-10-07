@@ -7,57 +7,32 @@ This demo's purpose is for creating a chat client while harnessing the power of 
 
 ## Overview - step-01
 
-This branch lays out the foundation for a brand new Sails project created via `sails new angular-design --linker`, with some modifications.
+A couple of things changed from the initial state.
 
-*   The assets specified for the asset manager are specifically enumerated in the Gruntfile - this is to naively control load order
-*   `MainController` is created to handle the default root route `'/'` - this is in the event we want to process any default actions
-    *   Located in `api/controllers/main.js`
-*   `bower.json` & `.bowerrc` are created in order to best leverage use of [Bower](http://bower.io) for client-side libraries with dependency management
-*   Client-side libraries used:
-    *   [Bootstrap](http://getbootstrap.com)
-        *   Popular and powerful CSS framework
-        *   Supports [LESS](http://lesscss.org), the CSS preprocessor
-        *   Not including JS portion
-            *   Heavy dependency on [jQuery](http://jquery.org)
-            *   Excellent alternative for this project (see below)
-    *   [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
-            *   Awesome set of icons provided as fonts that synergizes with Twitter Bootstrap well
-    *   [Lo-dash](http://lodash.com)
-        *   Awesome lightweight utility belt of methods that make JavaScript much better to develop in
-    *   [AngularJS](http://angularjs.org)
-        *   Awesome client-side JavaScript framework
-        *   Facilitates code organization in an excellent manner
-        *   Uses HTML to describe the DOM, avoiding polluting HTML with template-specific helpers that are tied to the templating framework
-        *   Built in a modular fashion, making it easy to create reusable modules, widgets, etc.
-    *   [Angular UI Bootstrap](http://angular-ui.github.io/bootstrap/)
-        *   Rewrite of Bootstrap's JavaScript as an Angular plugin
-        *   Requires no jQuery! (can save ~80-90 KB!)
-        *   Adds additional features not present in default Bootstrap
-            *   Ratings
-            *   Datepicker
-            *   Timepicker
-        *   Integrates excellently with Angular
-*   `views/main/index.ejs` used for default view
-    *   Contains default HTML frame for the chat application
-    *   Has no dynamic functionality currently
-*   `assets/linker/main.less` is the main stylesheet
-    *   Contains basic stylings so that the main view looks sensible for a chat application
-*   `grunt-karma` used for automating unit testing of client-side app
-    *   Uses [Karma](http://karma-runner.github.io) for running client-side unit tests
-    *   Using [Jasmine](http://pivotal.github.io/jasmine/) forunit testing framework & assertions on client-side JS
+*   The HTML was simplified to take advantage of Angular in accordance with DRY (Don't Repeat Yourself)
+*   Wrote a unit test for the `send` action
+*   Wrote a preliminary implementation of the `send` action in order to pass the unit test
+
+The app did not break, and it adds a new line!  In addition, a simple unit test for the controller is available for perusing.
+
+However, the app does not add a user name when text is sent.  It still isn't dynamic, since any other user who opens up the web page would only see the static content, the two lines with hardcoded data that was moved to the client-side controller.
 
 ## Tasks
 
-This app needs to have basic functionality on the client in order to function as a chat application.
+This app needs to have more functionality on the client, as well as more functionality on the server, for syncing all clients with the current text.
 
-*   Need to be able to add lines to chat
-    *   Must architect feature in such a way that plugging in the syncing of text displayed via Socket.io is as painless as possible
-*   Need to implement collapsing the navbar via alternative mechanism (due to the lack of inclusion of Bootstrap's JS)
+*   Need to add a user when text is sent
+*   Need to send text across the socket
+*   Need to respond to text being received from the socket & update the UI appropriately
 
 ## Steps to accomplish tasks
 
-*   Refactor HTML to take advantage of Angular
-*   Write unit test for implementing adding a new line to the chat
-*   Implement feature to make the test pass
+*   Added in a hardcoded username
+*   Refactor unit test to test for the correct username being sent in `sendLine()`
+*   Refactor `sendLine()` to add in the username
+*   Create service for interacting with socket.io
+*   Add unit test to test socket functionality - mock the service for interacting with the socket for the `sendLine()` test
+*   Write unit tests for service that interacts with sockets
+*   Make the unit tests pass
 
-Go to [step-02](https://github.com/wesleycho/angular-design/tree/step-01) to see the solution!
+Go to [step-03](https://github.com/wesleycho/angular-design/tree/step-03) to see the solution!
