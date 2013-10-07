@@ -25,4 +25,10 @@ angular.module('ChatApp')
     ];
 
     $scope.chat = {};
+
+    $scope.sendLine = function () {
+      $scope.lines.push({
+        text: $scope.chat.text
+      });
+    };
   });
