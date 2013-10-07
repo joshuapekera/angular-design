@@ -31,7 +31,7 @@ npm-debug.log
 ########################
 # Bower
 ########################
-assets/bower_components
+assets/linker/bower_components
 
 
 ########################
