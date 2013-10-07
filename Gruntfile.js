@@ -64,8 +64,7 @@ module.exports = function (grunt) {
     // *->    put other dependencies here   <-*
 
     // All of the rest of your app scripts imported here
-    'linker/js/angularApp.js',
-    'linker/js/controllers/main.js'
+    'linker/js/angularApp.js'
   ];
 
 
@@ -140,6 +139,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-simple-mocha');
 
   // Project configuration.
   grunt.initConfig({
@@ -403,6 +403,17 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
+      }
+    },
+
+    mocha: {
+      options: {
+        globals: [],
+        timeout: 3000,
+        ignoreLeaks: false,
+        grep: 'test/server/**/*.spec.js',
+        ui: 'bdd',
+        reporter: 'dot'
       }
     },
 
