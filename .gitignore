@@ -43,6 +43,7 @@ assets/linker/bower_components
 .netbeans
 nbproject
 .idea
+*.sw*
 
 
 ########################
