@@ -35,11 +35,11 @@ module.exports.routes = {
   'get /': {
     controller: 'MainController'
   },
-  'get /api/user/add': {
+  'post /api/user/add': {
     controller: 'ChatController',
     action: 'addUser'
   },
-  'get /api/line/add': {
+  'post /api/line/add': {
     controller: 'ChatController',
     action: 'addLine'
   }
