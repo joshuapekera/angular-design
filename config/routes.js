@@ -34,6 +34,14 @@ module.exports.routes = {
   // (This would also work if you had a file at: `/views/home.ejs`)
   'get /': {
     controller: 'MainController'
+  },
+  'get /api/user/add': {
+    controller: 'ChatController',
+    action: 'addUser'
+  },
+  'get /api/line/add': {
+    controller: 'ChatController',
+    action: 'addLine'
   }
 
   /*
