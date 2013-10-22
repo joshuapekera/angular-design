@@ -5,23 +5,26 @@
 
 This demo's purpose is for creating a chat client while harnessing the power of [AngularJS](http://angularjs.org), while integrating with Socket.io via [Sails.js](http://sailsjs.org).
 
-## Overview - step-02
+## Overview - step-03
 
-A couple of things changed from the initial state.
+This step did not complete all of the tasks outlined in `step-02`, but it does build out the Node.js server
 
-*   The HTML was simplified to take advantage of Angular in accordance with DRY (Don't Repeat Yourself)
-*   Wrote a unit test for the `send` action
-*   Wrote a preliminary implementation of the `send` action in order to pass the unit test
+*   The models are created
+*   The chat controller for all apis related to chat was created
+    *    `addUser` and `addLine` methods were added for updating all connected sockets with the current users and lines, respectively
+    *    This implementation leaves it to the client to display the updated text appropriately
 
-The app did not break, and it adds a new line!  In addition, a simple unit test for the controller is available for perusing.
+This is a little bit more complex, but simple as far as a server-side app goes.  The controller actions are json-only apis, but they control the behavior of all of the sockets connected to the app.
 
-However, the app does not add a user name when text is sent.  It still isn't dynamic, since any other user who opens up the web page would only see the static content, the two lines with hardcoded data that was moved to the client-side controller.
+The controller makes use of some helper extensions to Socket.io via Sails, namely `request.listen`, `Model.introduce`, and `Model.publish`.
+
+The raw socket is exposed via `req.socket`, and so this app takes advantage of Socket.io's heartbeat api to catch when a user disconnects from the socket (whether it be due to connection issues, or closing of the web browser), and update the user list in chat appropriately for all other users.
 
 ## Tasks
 
-This app needs to have more functionality on the client, as well as more functionality on the server, for syncing all clients with the current text.
+We need to finally update the client-side app to take advantage of the backend.
 
-*   Need to add a user when text is sent
+*   Need to create a prompt to create a user at the beginning
 *   Need to send text across the socket
 *   Need to respond to text being received from the socket & update the UI appropriately
 
@@ -29,17 +32,8 @@ This app needs to have more functionality on the client, as well as more functio
 
 ### Client-side
 
-*   Added in a hardcoded username
-*   Refactor unit test to test for the correct username being sent in `sendLine()`
-*   Refactor `sendLine()` to add in the username
+*   Have the app initialize with a modal prompt asking for the user name
+*   Create unit tests for `Socket` service on the client, which serves as a wrapper for the app's interaction with Socket.io
 *   Create service for interacting with socket.io
-*   Add unit test to test socket functionality - mock the service for interacting with the socket for the `sendLine()` test
-*   Write unit tests for service that interacts with sockets
-*   Make the unit tests pass
 
-### Server-side
-
-*   Write unit tests for websocket API
-*   Implement websocket api
-
-Go to [step-03](https://github.com/wesleycho/angular-design/tree/step-03) to see the solution!
+Go to [step-04](https://github.com/wesleycho/angular-design/tree/step-04) to see the solution!
