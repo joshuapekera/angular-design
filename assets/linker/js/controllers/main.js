@@ -1,34 +1,33 @@
 'use strict';
 
 angular.module('ChatApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.lines = [
-      {
-        name: 'Larry',
-        time: '12:00',
-        text: 'Whooooooooooa'
-      },
-      {
-        name: 'Dave',
-        time: '12:01',
-        text: 'This is just placeholder text'
-      }
-    ];
+  .controller('MainCtrl', function ($scope, $modal, Socket) {
+    $scope.data = Socket.data();
 
-    $scope.people = [
-      {
-        name: 'Larry'
-      },
-      {
-        name: 'Dave'
-      }
-    ];
-
+    $scope.user = {
+      name: ''
+    };
     $scope.chat = {};
 
     $scope.sendLine = function () {
-      $scope.lines.push({
+      return Socket.addLine({
+        user: $scope.user,
         text: $scope.chat.text
+      }).then(function () {
+        return $scope.chat.text = '';
       });
     };
+
+    // Initialization
+    $modal.open({
+      controller: 'LoginCtrl',
+      templateUrl: 'loginModal.html',
+      backdrop: 'static',
+      keyboard: false
+    }).result.then(function (user) {
+      $scope.user.name = user.name;
+      Socket.addUser({
+        user: $scope.user
+      });
+    });
   });

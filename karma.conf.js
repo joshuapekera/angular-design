@@ -10,6 +10,7 @@ module.exports = function (config) {
       'assets/linker/js/config.js',
       'tests/client/specHelper.js',
       'assets/linker/js/controllers/main.js',
+      'assets/linker/js/controllers/login.js',
       'assets/linker/js/services/socket.js',
       'tests/client/spec/**/*.spec.js'
     ],

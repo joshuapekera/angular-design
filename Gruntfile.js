@@ -67,6 +67,7 @@ module.exports = function (grunt) {
     'linker/js/angularApp.js',
     'linker/js/config.js',
     'linker/js/controllers/main.js',
+    'linker/js/controllers/login.js',
     'linker/js/services/socket.js'
   ];
 
