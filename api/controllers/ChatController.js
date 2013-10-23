@@ -48,7 +48,10 @@ module.exports = {
         });
       });
 
-      return res.json({ user: user });
+      return res.json({
+        users: User.findByConnected(true),
+        lines: Line.find().sort('createdAt desc').limit(50)
+      });
     });
   },
   addLine: function (req, res) {
@@ -65,7 +68,8 @@ module.exports = {
       this.publishUpdate(req);
 
       return res.json({
-        line: line
+        users: User.findByConnected(true),
+        lines: Line.find().sort('createdAt desc').limit(50)
       });
     });
   },

@@ -65,7 +65,9 @@ module.exports = function (grunt) {
 
     // All of the rest of your app scripts imported here
     'linker/js/angularApp.js',
-    'linker/js/controllers/main.js'
+    'linker/js/config.js',
+    'linker/js/controllers/main.js',
+    'linker/js/services/socket.js'
   ];
 
 
