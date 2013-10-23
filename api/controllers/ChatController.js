@@ -56,6 +56,7 @@ module.exports = {
   },
   addLine: function (req, res) {
     var param = req.param;
+    console.log(param);
 
     return Line.create({
       user: param.user,

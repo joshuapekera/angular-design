@@ -21,7 +21,7 @@ angular.module('ChatApp')
     // Initialization
     $modal.open({
       controller: 'LoginCtrl',
-      templateUrl: 'loginModal.html',
+      templateUrl: 'linker/templates/loginModal.html',
       backdrop: 'static',
       keyboard: false
     }).result.then(function (user) {
