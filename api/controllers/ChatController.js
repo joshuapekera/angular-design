@@ -30,7 +30,7 @@ module.exports = {
     var param = req.param;
 
     User.create({
-      name: param.name
+      name: param('user')
     }).done(function (err, user) {
       if (err) {
         return res.json({ message: err });
@@ -56,11 +56,10 @@ module.exports = {
   },
   addLine: function (req, res) {
     var param = req.param;
-    console.log(param);
 
     return Line.create({
-      user: param.user,
-      text: param.text
+      user: param('user'),
+      text: param('text')
     }).done(function (err, line) {
       if (err) {
         return res.json({ message: err });

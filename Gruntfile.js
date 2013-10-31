@@ -59,7 +59,7 @@ module.exports = function (grunt) {
     // Libraries retrieved from Bower
     'linker/bower_components/lodash/dist/lodash.js',
     'linker/bower_components/angular/angular.js',
-    'linker/bower_components/angular-bootstrap/dist/ui-bootstrap-tpls-0.6.0-SNAPSHOT.js',
+    'linker/bower_components/angular-bootstrap/dist/ui-bootstrap-0.6.0-SNAPSHOT.js',
 
     // *->    put other dependencies here   <-*
 
@@ -83,7 +83,7 @@ module.exports = function (grunt) {
    */
 
   var templateFilesToInject = [
-    'linker/templates/*.html'
+    'linker/templates/**/*.html'
   ];
 
 

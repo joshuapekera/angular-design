@@ -20,7 +20,7 @@ angular.module('ChatApp')
         deferred = $q.defer();
 
         socket.post(route.forAddingAUser, {
-          name: user,
+          user: user.name,
           message: 'user:add'
         }, function (res) {
           setData(res);

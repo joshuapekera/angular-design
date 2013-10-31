@@ -1,0 +1,20 @@
+<form name="form.login" ng-submit="login($event)" novalidate>
+  <div class="modal-header">
+    <h3>Log In</h3>
+  </div>
+  <div class="modal-body">
+    <h4>Select a user name</h4>
+    <ul>
+      <li ng-repeat="error in errors" class="error">{{error.message}}</li>
+    </ul>
+    <div class="form-group" ng-class="{'has-error': errors.length > 0}">
+      <label class="col-lg-2 control-label" for="userInput">Username</label>
+      <div class="col-lg-4">
+        <input name="user" id="userInput" class="form-control" ng-model="user.name" ng-pattern="/\w+/" required>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <input type="submit" class="btn btn-primary" value="Log In">
+  </div>
+</form>

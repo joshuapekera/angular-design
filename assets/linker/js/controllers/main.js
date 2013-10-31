@@ -27,7 +27,7 @@ angular.module('ChatApp')
     }).result.then(function (user) {
       $scope.user.name = user.name;
       Socket.addUser({
-        user: $scope.user
+        name: $scope.user.name
       });
     });
   });
