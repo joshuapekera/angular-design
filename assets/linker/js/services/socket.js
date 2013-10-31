@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ChatApp')
-  .factory('Socket', function ($q, route) {
+  .factory('Socket', function ($q, $rootScope, route) {
     var data = {};
     data.users = [];
     data.lines = [];
@@ -50,7 +50,11 @@ angular.module('ChatApp')
     };
 
     function setData (response) {
+      console.log(response);
       data.users = response.users;
       data.lines = response.lines;
+      if (!$rootScope.$$phase) {
+        $rootScope.$apply();
+      }
     }
   });

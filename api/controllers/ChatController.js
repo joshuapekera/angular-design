@@ -15,7 +15,7 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-module.exports = {
+var ChatController = {
     
   
 
@@ -27,9 +27,10 @@ module.exports = {
   _config: {},
 
   addUser: function (req, res) {
-    var param = req.param;
+    var param;
+    param = req.param;
 
-    User.create({
+    return User.create({
       name: param('user')
     }).done(function (err, user) {
       if (err) {
@@ -38,7 +39,7 @@ module.exports = {
 
       req.listen(1);
       User.introduce(req.socket, 1);
-      this.publishUpdate(req);
+      ChatController.publishUpdate(req);
 
       var self = this;
 
@@ -48,14 +49,25 @@ module.exports = {
         });
       });
 
+      var userList, chatLog;
+
+      User.findByConnected(true).exec(function (err, users) {
+        userList = users;
+      });
+
+      Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
+        chatLog = data;
+      });
+
       return res.json({
-        users: User.findByConnected(true),
-        lines: Line.find().sort('createdAt desc').limit(50)
+        users: userList,
+        lines: chatLog
       });
     });
   },
   addLine: function (req, res) {
-    var param = req.param;
+    var param;
+    param = req.param;
 
     return Line.create({
       user: param('user'),
@@ -65,11 +77,21 @@ module.exports = {
         return res.json({ message: err });
       }
 
-      this.publishUpdate(req);
+      ChatController.publishUpdate(req);
+
+      var userList, chatLog;
+
+      User.findByConnected(true).exec(function (err, users) {
+        userList = users;
+      });
+
+      Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
+        chatLog = data;
+      });
 
       return res.json({
-        users: User.findByConnected(true),
-        lines: Line.find().sort('createdAt desc').limit(50)
+        users: userList,
+        lines: chatLog
       });
     });
   },
@@ -81,3 +103,5 @@ module.exports = {
       });
   }
 };
+
+module.exports = ChatController;

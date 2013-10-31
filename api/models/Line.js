@@ -23,8 +23,9 @@ module.exports = {
     },
     createdAt: 'date'
   },
-  beforeCreate: function (values) {
+  beforeCreate: function (values, next) {
     values.createdAt = new Date();
+    next();
   }
 
 };

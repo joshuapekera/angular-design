@@ -20,9 +20,10 @@ module.exports = {
     createdAt: 'date',
     connected: 'boolean'
   },
-  beforeCreate: function (values) {
+  beforeCreate: function (values, next) {
     values.createdAt = new Date();
     values.connected = true;
+    next();
   }
 
 };

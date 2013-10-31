@@ -11,7 +11,7 @@ angular.module('ChatApp')
 
     $scope.sendLine = function () {
       return Socket.addLine({
-        user: $scope.user,
+        user: $scope.user.name,
         text: $scope.chat.text
       }).then(function () {
         return $scope.chat.text = '';
