@@ -29,13 +29,14 @@ describe('LoginCtrl', function () {
   it('should reject user submission if invalid', function () {
     instantiateCtrl();
 
-    expect($rootScope.user).toBe('');
+    expect(_($rootScope.user).isObject()).toBe(true);
+    expect($rootScope.user.name).toBe('');
 
-    $rootScope.loginForm = {
+    $rootScope.form.login = {
       $invalid: false
     };
 
-    $rootScope.loginForm.$invalid = true;
+    $rootScope.form.login.$invalid = true;
 
     var value = $rootScope.login(e);
 
