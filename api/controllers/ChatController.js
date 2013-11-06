@@ -47,12 +47,10 @@ var ChatController = {
         user.destroy();
       });
 
-      var userList, chatLog;
-
-      return Q.all([getUserList(), getChatLog()]).done(function () {
+      Q.all([getUserList(), getChatLog()]).then(function (results) {
         return res.json({
-          users: userList,
-          lines: chatLog
+          users: results[0],
+          lines: results[1]
         });
       });
     });
@@ -71,12 +69,10 @@ var ChatController = {
 
       ChatController.publishUpdate(req);
 
-      var userList, chatLog;
-
-      return Q.all([getUserList(), getChatLog()]).done(function () {
+      Q.all([getUserList(), getChatLog()]).then(function (results) {
         return res.json({
-          users: userList,
-          lines: chatLog
+          users: results[0],
+          lines: results[1]
         });
       });
     });
@@ -91,19 +87,23 @@ var ChatController = {
 };
 
 function getUserList () {
-  return Q.fbind(function () {
-    User.findByConnected(true).exec(function (err, users) {
-      userList = users;
-    });
+  var deferred = Q.defer();
+
+  User.findByConnected(true).exec(function (err, users) {
+    deferred.resolve(users);
   });
+
+  return deferred.promise;
 }
 
 function getChatLog () {
-  return Q.fbind(function () {
-    Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
-      chatLog = data;
-    });
+  var deferred = Q.defer();
+
+  Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
+    deferred.resolve(data);
   });
+
+  return deferred.promise;
 }
 
 module.exports = ChatController;
