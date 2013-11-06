@@ -34,8 +34,7 @@
     -->
 
     <!--STYLES-->
-    All .css files in assets/linker/styles (including automatically compile ones from LESS) will be included here
-    In production mode, they will all be concatenated and minified
+    <link rel="stylesheet" href="/linker/styles/main.css">
     <!--STYLES END-->
   </head>
 
@@ -85,8 +84,13 @@
     -->
 
     <!--SCRIPTS-->
-    All .js files in assets/linker/js will be included here
-    In production mode, they will all be concatenated and minified
+    <script src="/linker/js/socket.io.js"></script>
+    <script src="/linker/js/sails.io.js"></script>
+    <script src="/linker/js/app.js"></script>
+    <script src="/linker/bower_components/lodash/dist/lodash.js"></script>
+    <script src="/linker/bower_components/angular/angular.js"></script>
+    <script src="/linker/bower_components/angular-bootstrap/dist/ui-bootstrap-0.6.0-SNAPSHOT.js"></script>
+    <script src="/linker/js/angularApp.js"></script>
     <!--SCRIPTS END-->
     </body>
 </html>

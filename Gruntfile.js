@@ -79,7 +79,7 @@ module.exports = function (grunt) {
    */
 
   var templateFilesToInject = [
-    'linker/templates/*.html'
+    'linker/templates/**/*.html'
   ];
 
 
@@ -406,14 +406,16 @@ module.exports = function (grunt) {
       }
     },
 
-    mocha: {
+    simplemocha: {
       options: {
         globals: [],
         timeout: 3000,
-        ignoreLeaks: false,
-        grep: 'test/server/**/*.spec.js',
+        ignoreLeaks: true,
         ui: 'bdd',
         reporter: 'dot'
+      },
+      all: {
+        src: ['tests/server/**/User.spec.js']
       }
     },
 
@@ -460,8 +462,12 @@ module.exports = function (grunt) {
     'sails-linker:devTplJADE'
   ]);
 
-  grunt.registerTask('test', [
+  grunt.registerTask('test:client', [
     'karma:unit'
+  ]);
+
+  grunt.registerTask('test:server', [
+    'simplemocha:all'
   ]);
 
 
