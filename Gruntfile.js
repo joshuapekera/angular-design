@@ -80,7 +80,7 @@ module.exports = function (grunt) {
    */
 
   var templateFilesToInject = [
-    'linker/templates/*.html'
+    'linker/templates/**/*.html'
   ];
 
 
