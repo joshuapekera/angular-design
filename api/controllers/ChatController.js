@@ -15,6 +15,8 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var Q = require('q');
+
 var ChatController = {
     
   
@@ -41,27 +43,17 @@ var ChatController = {
       User.introduce(req.socket, 1);
       ChatController.publishUpdate(req);
 
-      var self = this;
-
       req.socket.on('disconnect', function () {
-        user.destroy(function () {
-          self.publish(req);
-        });
+        user.destroy();
       });
 
       var userList, chatLog;
 
-      User.findByConnected(true).exec(function (err, users) {
-        userList = users;
-      });
-
-      Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
-        chatLog = data;
-      });
-
-      return res.json({
-        users: userList,
-        lines: chatLog
+      return Q.all([getUserList(), getChatLog()]).done(function () {
+        return res.json({
+          users: userList,
+          lines: chatLog
+        });
       });
     });
   },
@@ -81,17 +73,11 @@ var ChatController = {
 
       var userList, chatLog;
 
-      User.findByConnected(true).exec(function (err, users) {
-        userList = users;
-      });
-
-      Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
-        chatLog = data;
-      });
-
-      return res.json({
-        users: userList,
-        lines: chatLog
+      return Q.all([getUserList(), getChatLog()]).done(function () {
+        return res.json({
+          users: userList,
+          lines: chatLog
+        });
       });
     });
   },
@@ -103,5 +89,21 @@ var ChatController = {
       });
   }
 };
+
+function getUserList () {
+  return Q.fbind(function () {
+    User.findByConnected(true).exec(function (err, users) {
+      userList = users;
+    });
+  });
+}
+
+function getChatLog () {
+  return Q.fbind(function () {
+    Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
+      chatLog = data;
+    });
+  });
+}
 
 module.exports = ChatController;
