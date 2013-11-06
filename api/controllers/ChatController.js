@@ -15,7 +15,9 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-module.exports = {
+var Q = require('q');
+
+var ChatController = {
     
   
 
@@ -27,10 +29,11 @@ module.exports = {
   _config: {},
 
   addUser: function (req, res) {
-    var param = req.param;
+    var param;
+    param = req.param;
 
-    User.create({
-      name: param.name
+    return User.create({
+      name: param('user')
     }).done(function (err, user) {
       if (err) {
         return res.json({ message: err });
@@ -38,34 +41,43 @@ module.exports = {
 
       req.listen(1);
       User.introduce(req.socket, 1);
-      this.publishUpdate(req);
-
-      var self = this;
+      ChatController.publishUpdate(req);
 
       req.socket.on('disconnect', function () {
-        user.destroy(function () {
-          self.publish(req);
-        });
+        user.destroy();
       });
 
-      return res.json({ user: user });
+      var userList, chatLog;
+
+      return Q.all([getUserList(), getChatLog()]).done(function () {
+        return res.json({
+          users: userList,
+          lines: chatLog
+        });
+      });
     });
   },
   addLine: function (req, res) {
-    var param = req.param;
+    var param;
+    param = req.param;
 
     return Line.create({
-      user: param.user,
-      text: param.text
+      user: param('user'),
+      text: param('text')
     }).done(function (err, line) {
       if (err) {
         return res.json({ message: err });
       }
 
-      this.publishUpdate(req);
+      ChatController.publishUpdate(req);
 
-      return res.json({
-        line: line
+      var userList, chatLog;
+
+      return Q.all([getUserList(), getChatLog()]).done(function () {
+        return res.json({
+          users: userList,
+          lines: chatLog
+        });
       });
     });
   },
@@ -77,3 +89,21 @@ module.exports = {
       });
   }
 };
+
+function getUserList () {
+  return Q.fbind(function () {
+    User.findByConnected(true).exec(function (err, users) {
+      userList = users;
+    });
+  });
+}
+
+function getChatLog () {
+  return Q.fbind(function () {
+    Line.find().sort('createdAt desc').limit(50).exec(function (err, data) {
+      chatLog = data;
+    });
+  });
+}
+
+module.exports = ChatController;
